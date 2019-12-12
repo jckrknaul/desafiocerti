@@ -17,4 +17,4 @@ Seguir os seguintes passos para rodar a aplicação em seu ambiente:
 
 5- Abrir o navegador e testar a aplicação. Utilizar a porta 3000 (Ex.: http://localhost:3000/32423)
 
-
+OBS.: Também esta disponível no Heroku esta aplicação, basta seguir o seguinte link: https://desafiocerti.herokuapp.com/-4234
