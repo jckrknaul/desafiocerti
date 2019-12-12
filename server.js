@@ -5,7 +5,7 @@ const HOST = '0.0.0.0';
 
 const app = express();
 
-//rotas
+//rotas usadas
 app.use('/', require('./routes'));
 
 app.listen(process.env.PORT || PORT, process.env.HOST || HOST);
