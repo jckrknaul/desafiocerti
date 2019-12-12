@@ -8,4 +8,4 @@ const app = express();
 //rotas
 app.use('/', require('./routes'));
 
-app.listen(PORT, HOST);
+app.listen(process.env.PORT || PORT, process.env.HOST || HOST);
