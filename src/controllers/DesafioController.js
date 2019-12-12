@@ -1,4 +1,5 @@
 String.prototype.extenso = function(c){
+    
     var ex = [
         ["zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"],
         ["dez", "vinte", "trinta", "quarenta", "cinqüenta", "sessenta", "setenta", "oitenta", "noventa"],
@@ -19,9 +20,14 @@ String.prototype.extenso = function(c){
         a = ((sl = s.length) > 1 ? (a = s.pop(), s.join(" ") + e + a) : s.join("") || ((!j && (n[j + 1] * 1 > 0) || r.length) ? "" : ex[0][0]));
         a && r.push(a + (c ? (" " + (v.join("") * 1 > 1 ? j ? d + "s" : (/0{6,}$/.test(n[0]) ? "de " : "") + $.replace("l", "is") : j ? d : $)) : ""));
     }
+
     return r.join(e);
 }
 
+function negativoPositivo(sinal, value) {
+    const negativo = sinal % 1 == 0 ? false : true;
+    return negativo ? 'menos '+ value : value;
+}
 
 module.exports = {
     async execReturnExt(req, res) {
@@ -30,8 +36,9 @@ module.exports = {
         if (idParam < -99999 | idParam > 99999) {
             return res.status(406).send({error: 'Intervalo do parametro deve ser entre -99999 e 99999'})
         }else {
-            const retExtendo = idParam.extenso();
-            return res.send(retExtendo);
+            const firstLet = idParam.substring(0, 1);
+            const extenso = negativoPositivo(firstLet, idParam.extenso());
+            return res.send({extenso: extenso});
         }
         
     }
